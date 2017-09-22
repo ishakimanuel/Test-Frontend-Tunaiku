@@ -1,0 +1,456 @@
+// ==========================================================================
+// VENDORS
+// ==========================================================================
+@import './normalize.scss';
+// ==========================================================================
+// Setting Variable
+// ==========================================================================
+// Color Setting
+$color-accent: #2d4452;
+$color-main: #f2f2f2;
+$color-light: #fff;
+$color-font--main: #000;
+$color-font--accent: #f0f0f0;
+// Font Stack
+$main-font: Arial,
+sans-serif;
+// Font Size
+$base-font-size: 16px;
+// Font Weights
+$font-weight--normal: normal;
+$font-weight--bold: bold;
+// Layout
+$page-max-widht: 1140px;
+// ==========================================================================
+// MIXIN
+// ==========================================================================
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+@mixin el-center ($margin: 0) {
+  margin: $margin auto;
+}
+
+// ==========================================================================
+// Functions
+// ==========================================================================
+@function rem($target, $context: $base-font-size) {
+  @return ($target / $context) * 1rem;
+}
+
+@function em($target, $context: $base-font-size) {
+  @return ($target / $context) * 1em;
+}
+
+// ==========================================================================
+// EXTENDS
+// ==========================================================================
+%center-dead {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+// ==========================================================================
+// CLASSES
+// ==========================================================================
+.container {
+  @include el-center;
+  height: 100%;
+  max-width: $page-max-widht;
+  width: 90%;
+}
+
+.headline {
+  font-family: $main-font;
+  letter-spacing: -1px;
+}
+
+.grid {
+  @include clearfix();
+}
+
+// ==========================================================================
+// Global Styles
+// ==========================================================================
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $base-font-size;
+}
+
+body {
+  color: $color-font--main;
+  height: 100%;
+  font: 1rem / 1.4 $main-font;
+  overflow-x: hidden;
+}
+
+section {
+  padding: rem(60px) 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $color-font--accent;
+}
+
+// ==========================================================================
+// TYPPHOGRAPHY
+// ==========================================================================
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-weight: $font-weight--normal;
+}
+
+h1 {
+  font-size: em(42px);
+}
+
+h2 {
+  font-size: em(36px);
+}
+
+h3 {
+  font-size: em(20px);
+}
+
+%btn {
+  background-color: $color-accent;
+  padding: rem(20px) rem(45px);
+  border-radius: 10px;
+  color: $color-font--accent;
+  font-weight: $font-weight--bold;
+  border: none;
+}
+
+.btn {
+  @extend %btn;
+}
+
+button {
+  @extend %btn;
+}
+
+header {
+  background-color: $color-accent;
+  height: rem(80px);
+}
+
+.logo {
+  position: relative;
+  float: left; // height: rem(80px);
+  line-height: rem(80px);
+  img {
+    padding-top: rem(20px); // @extend %center-dead;
+    line-height: rem(80px);
+  }
+}
+
+.nav {
+  height: rem(80px);
+  float: right;
+  .menu {
+    float: right;
+    position: relative;
+    >li {
+      line-height: rem(80px);
+      padding: 0 rem(25px);
+      float: left;
+      .search-icon {
+        position: absolute;
+        top: rem(5px);
+        line-height: rem(80px); // top: 50%;
+      }
+      &:hover {
+        background-color: darken($color-accent, 2%);
+        >a {
+          color: #6fae08;
+        }
+      }
+    }
+    .submenu {
+      opacity: 0;
+      position: absolute;
+      margin-left: rem(-25px);
+      background-color: none;
+      transition: all .3s;
+      li {
+        padding: 0 rem(25px);
+        opacity: .6;
+        background-color: rgba($color-accent, .8);
+        &:hover {
+          background-color: darken($color-accent, 2%);
+          a {
+            color: #6fae08;
+          }
+        }
+      }
+    }
+    .menu-3:hover .submenu {
+      opacity: 1;
+    }
+  }
+}
+
+.hero {
+  background-color: $color-main;
+  &__content {
+    float: left;
+    width: 50%;
+  }
+  &__desc {
+    font-size: rem(20px);
+  }
+  &__img--phone {
+    display: none;
+  }
+  &__img {
+    float: right;
+    text-align: right;
+    width: 50%;
+  }
+  &__btn {
+    margin-top: rem(40px);
+  }
+}
+
+.features {
+  text-align: center;
+  .item {
+    float: left;
+    padding: 0 rem(30px);
+    margin-top: rem(80px);
+    width: 33.333%;
+    &__img {
+      max-width: rem(100px);
+      height: 100px;
+    }
+    &__title {
+      margin-top: rem(10px);
+    }
+  }
+}
+
+.form {
+  text-align: center;
+  background-color: $color-main;
+  max-width: 100%;
+  .headline {
+    @include el-center;
+    width: 70%;
+  }
+  &__btn {
+    text-transform: uppercase;
+    font-size: rem(20px);
+  }
+  form {
+    @include el-center;
+    max-width: 100%;
+  }
+  input {
+    max-width: 100%;
+    padding: rem(20px) rem(120px) rem(20px) rem(30px);
+    margin: rem(40px) rem(25px);
+    font-size: rem(20px);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+  }
+}
+
+.footer {
+  background-color: $color-accent;
+  padding: rem(40px) 0;
+  color: $color-font--accent;
+  &__top {
+    height: rem(80px);
+    .menu {
+      li {
+        padding: 0 rem(15px);
+      }
+    }
+  }
+  &__mid {
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    .mid__desc {
+      float: left;
+      width: 60%;
+    }
+    .mid__social {
+      float: right; // text-align: right;
+      img {
+        height: rem(30px);
+        margin-left: 20px;
+      }
+    }
+  }
+  &__bottom {
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .hero {
+    &__content {
+      width: 70%;
+    }
+    &__desc {
+      font-size: rem(20px);
+    }
+    &__img {
+      width: 30%;
+    }
+    &__btn {
+      margin-top: rem(40px);
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: em(30px);
+  }
+  h2 {
+    font-size: em(24px);
+  }
+  h3 {
+    font-size: em(22px);
+  }
+  section {
+    padding: rem(40px) 0;
+  }
+  header {
+    height: 100%;
+  }
+  .logo {
+    position: static;
+    padding: rem(25px) rem(25px) 0;
+    float: none; // height: rem(80px);
+    line-height: rem(80px);
+    img {
+      padding-top: 0; // @extend %center-dead;
+      line-height: 0;
+    }
+  }
+  .nav {
+    height: 100%;
+    float: none;
+    .menu {
+      float: none;
+      position: static;
+      >li {
+        // padding: 0 rem(25px);
+        line-height: rem(40px);
+        float: none;
+        .search-icon {
+          position: static;
+          line-height: rem(40px); // top: 50%;
+        }
+      }
+      .submenu {
+        opacity: 1;
+        position: static;
+        margin-left: 0;
+        background-color: $color-accent;
+        li {
+          padding: 0 rem(15px);
+        }
+      }
+    }
+  }
+  .hero {
+    &__content {
+      float: none;
+      width: 100%;
+    }
+    &__desc {
+      font-size: rem(20px);
+    }
+    &__img--phone {
+      display: block;
+      width: 30%;
+    }
+    &__img {
+      display: none;
+    }
+    &__btn {
+      margin-top: rem(40px);
+    }
+  }
+  .features {
+    text-align: center;
+    .item {
+      float: none;
+      padding: 0 rem(30px);
+      margin-top: rem(40px);
+      width: 100%;
+      &__img {
+        max-width: rem(100px);
+        height: 100px;
+      }
+      &__title {
+        margin-top: rem(10px);
+      }
+    }
+  }
+  .form {
+    overflow-x: hidden;
+    .headline {
+      width: 100%;
+    }
+    input {
+      display: block;
+      padding: rem(20px);
+      width: 100%;
+      margin: rem(20px) 0;
+    }
+  }
+  .footer {
+    height: 100%;
+    &__top {
+      height: 100%;
+    }
+    &__mid {
+      width: 100%;
+      height: 100%;
+      .mid__desc {
+        float: none;
+        width: 100%;
+      }
+      .mid__social {
+        float: none; // text-align: right;
+      }
+    }
+    &__bottom {
+      text-align: left;
+    }
+  }
+}

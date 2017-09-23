@@ -12,8 +12,7 @@ $color-light: #fff;
 $color-font--main: #000;
 $color-font--accent: #f0f0f0;
 // Font Stack
-$main-font: Arial,
-sans-serif;
+$main-font: Arial, sans-serif;
 // Font Size
 $base-font-size: 16px;
 // Font Weights
@@ -143,7 +142,6 @@ h3 {
 // ==========================================================================
 // COMPONENTS
 // ==========================================================================
-
 %btn {
   background-color: $color-accent;
   padding: rem(20px) rem(45px);
@@ -182,7 +180,7 @@ header {
   .menu {
     float: right;
     position: relative;
-    >li {
+    > li {
       line-height: rem(80px);
       padding: 0 rem(25px);
       float: left;
@@ -193,7 +191,7 @@ header {
       }
       &:hover {
         background-color: darken($color-accent, 2%);
-        >a {
+        > a {
           color: #6fae08;
         }
       }
@@ -203,11 +201,11 @@ header {
       position: absolute;
       margin-left: rem(-25px);
       background-color: none;
-      transition: all .3s;
+      transition: all 0.3s;
       li {
         padding: 0 rem(25px);
-        opacity: .6;
-        background-color: rgba($color-accent, .8);
+        opacity: 0.6;
+        background-color: rgba($color-accent, 0.8);
         &:hover {
           background-color: darken($color-accent, 2%);
           a {
@@ -220,6 +218,11 @@ header {
       opacity: 1;
     }
   }
+}
+
+.fa-close,
+.fa-bars {
+  display: none;
 }
 
 .hero {
@@ -355,22 +358,54 @@ header {
     height: 100%;
   }
   .logo {
+    @include clearfix();
     position: static;
     padding: rem(25px) rem(25px) 0;
     float: none; // height: rem(80px);
     line-height: rem(80px);
+    padding-bottom: rem(20px);
+    .fa-close,
+    .fa-bars {
+      margin-top: rem(5px);
+      display: block;
+      color: $color-font--accent;
+      font-size: rem(20px);
+      float: right;
+    }
     img {
+      float: left;
       padding-top: 0; // @extend %center-dead;
       line-height: 0;
     }
   }
+  @keyframes slide-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .nav {
+    position: static;
     height: 100%;
     float: none;
+    height: 300px;
+    transition: height 0.3s, opacity 0.5s;
+
+    &.hide {
+      transition: height 0.3s;
+      height: 0;
+      opacity: 0;
+    }
+
     .menu {
       float: none;
-      position: static;
-      >li {
+
+      > li {
         // padding: 0 rem(25px);
         line-height: rem(40px);
         float: none;

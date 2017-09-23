@@ -459,10 +459,10 @@ header {
       position: absolute;
       margin-left: -1.5625rem;
       background-color: none;
-      transition: all .3s; }
+      transition: all 0.3s; }
       .nav .menu .submenu li {
         padding: 0 1.5625rem;
-        opacity: .6;
+        opacity: 0.6;
         background-color: rgba(45, 68, 82, 0.8); }
         .nav .menu .submenu li:hover {
           background-color: #293f4b; }
@@ -470,6 +470,10 @@ header {
             color: #6fae08; }
     .nav .menu .menu-3:hover .submenu {
       opacity: 1; }
+
+.fa-close,
+.fa-bars {
+  display: none; }
 
 .hero {
   background-color: #f2f2f2; }
@@ -570,16 +574,42 @@ header {
     position: static;
     padding: 1.5625rem 1.5625rem 0;
     float: none;
-    line-height: 5rem; }
+    line-height: 5rem;
+    padding-bottom: 1.25rem; }
+    .logo::after {
+      clear: both;
+      content: '';
+      display: table; }
+    .logo .fa-close,
+    .logo .fa-bars {
+      margin-top: 0.3125rem;
+      display: block;
+      color: #f0f0f0;
+      font-size: 1.25rem;
+      float: right; }
     .logo img {
+      float: left;
       padding-top: 0;
       line-height: 0; }
+  @keyframes slide-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%); }
+    100% {
+      opacity: 1;
+      transform: translateY(0); } }
   .nav {
+    position: static;
     height: 100%;
-    float: none; }
+    float: none;
+    height: 300px;
+    transition: height 0.3s, opacity 0.5s; }
+    .nav.hide {
+      transition: height 0.3s;
+      height: 0;
+      opacity: 0; }
     .nav .menu {
-      float: none;
-      position: static; }
+      float: none; }
       .nav .menu > li {
         line-height: 2.5rem;
         float: none; }

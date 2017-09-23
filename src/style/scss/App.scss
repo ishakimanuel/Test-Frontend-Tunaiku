@@ -282,11 +282,12 @@ header {
   }
   input {
     max-width: 100%;
-    padding: rem(20px) rem(120px) rem(20px) rem(30px);
+    padding: rem(20px) rem(30px) rem(20px) rem(30px);
     margin: rem(40px) rem(25px);
     font-size: rem(20px);
     border: none;
     outline: none;
+    width: rem(460px);
     border-radius: 10px;
   }
 }

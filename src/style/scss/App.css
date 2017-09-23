@@ -573,7 +573,7 @@ header {
     height: 100%; }
   .logo {
     position: static;
-    padding: 1.5625rem 1.5625rem 0;
+    padding: 1.5625rem 1.5625rem 0 0;
     float: none;
     line-height: 5rem;
     padding-bottom: 1.25rem; }
@@ -605,6 +605,8 @@ header {
     float: none;
     height: 300px;
     transition: height 0.3s, opacity 0.5s; }
+    .nav__footer {
+      height: 150px; }
     .nav.hide {
       transition: height 0.3s;
       height: 0;
@@ -613,6 +615,7 @@ header {
       float: none; }
       .nav .menu > li {
         line-height: 2.5rem;
+        padding-left: 0;
         float: none; }
         .nav .menu > li .search-icon {
           position: static;

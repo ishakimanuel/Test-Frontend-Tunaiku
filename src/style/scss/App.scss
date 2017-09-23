@@ -361,7 +361,7 @@ header {
   .logo {
     @include clearfix();
     position: static;
-    padding: rem(25px) rem(25px) 0;
+    padding: rem(25px) rem(25px) 0 0;
     float: none; // height: rem(80px);
     line-height: rem(80px);
     padding-bottom: rem(20px);
@@ -396,7 +396,9 @@ header {
     float: none;
     height: 300px;
     transition: height 0.3s, opacity 0.5s;
-
+    &__footer {
+      height: 150px;
+    }
     &.hide {
       transition: height 0.3s;
       height: 0;
@@ -405,10 +407,10 @@ header {
 
     .menu {
       float: none;
-
       > li {
         // padding: 0 rem(25px);
         line-height: rem(40px);
+        padding-left: 0;
         float: none;
         .search-icon {
           position: static;
